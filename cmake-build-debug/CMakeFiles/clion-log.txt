@@ -1,0 +1,4 @@
+/snap/clion/121/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/bbrave/Desktop/OTUS/homeworks/hw2/HW2
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/bbrave/Desktop/OTUS/homeworks/hw2/HW2/cmake-build-debug
