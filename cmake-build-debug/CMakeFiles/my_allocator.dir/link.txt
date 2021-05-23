@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/my_allocator.dir/my_allocator.cpp.o CMakeFiles/my_allocator.dir/main.cpp.o CMakeFiles/my_allocator.dir/myContainer.cpp.o  -o my_allocator 

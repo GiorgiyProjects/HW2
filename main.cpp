@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include "pretty.h"
 #include <iostream>
@@ -7,8 +6,8 @@
 #include <cassert>
 #include <algorithm>
 
-#include "myAllocator.h"
-#include "myContainer.h"
+#include "myAllocator.hpp"
+#include "myContainer.hpp"
 
 int main()
 {

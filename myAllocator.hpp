@@ -1,3 +1,11 @@
+#include <iostream>
+#include "pretty.h"
+#include <iostream>
+#include <vector>
+#include <map>
+#include <cassert>
+#include <algorithm>
+
 #define MAX_POOL_SIZE 1000
 
 template<typename T>

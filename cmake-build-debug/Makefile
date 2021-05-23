@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named my_allocator
+# Target rules for targets named allocator
 
 # Build rule for target.
-my_allocator: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 my_allocator
-.PHONY : my_allocator
+allocator: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 allocator
+.PHONY : allocator
 
 # fast build rule for target.
-my_allocator/fast:
-	$(MAKE) -f CMakeFiles/my_allocator.dir/build.make CMakeFiles/my_allocator.dir/build
-.PHONY : my_allocator/fast
+allocator/fast:
+	$(MAKE) -f CMakeFiles/allocator.dir/build.make CMakeFiles/allocator.dir/build
+.PHONY : allocator/fast
 
 main.o: main.cpp.o
 
@@ -129,7 +129,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/my_allocator.dir/build.make CMakeFiles/my_allocator.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/allocator.dir/build.make CMakeFiles/allocator.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -138,7 +138,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/my_allocator.dir/build.make CMakeFiles/my_allocator.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/allocator.dir/build.make CMakeFiles/allocator.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -147,62 +147,8 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/my_allocator.dir/build.make CMakeFiles/my_allocator.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/allocator.dir/build.make CMakeFiles/allocator.dir/main.cpp.s
 .PHONY : main.cpp.s
-
-myContainer.o: myContainer.cpp.o
-
-.PHONY : myContainer.o
-
-# target to build an object file
-myContainer.cpp.o:
-	$(MAKE) -f CMakeFiles/my_allocator.dir/build.make CMakeFiles/my_allocator.dir/myContainer.cpp.o
-.PHONY : myContainer.cpp.o
-
-myContainer.i: myContainer.cpp.i
-
-.PHONY : myContainer.i
-
-# target to preprocess a source file
-myContainer.cpp.i:
-	$(MAKE) -f CMakeFiles/my_allocator.dir/build.make CMakeFiles/my_allocator.dir/myContainer.cpp.i
-.PHONY : myContainer.cpp.i
-
-myContainer.s: myContainer.cpp.s
-
-.PHONY : myContainer.s
-
-# target to generate assembly for a file
-myContainer.cpp.s:
-	$(MAKE) -f CMakeFiles/my_allocator.dir/build.make CMakeFiles/my_allocator.dir/myContainer.cpp.s
-.PHONY : myContainer.cpp.s
-
-my_allocator.o: my_allocator.cpp.o
-
-.PHONY : my_allocator.o
-
-# target to build an object file
-my_allocator.cpp.o:
-	$(MAKE) -f CMakeFiles/my_allocator.dir/build.make CMakeFiles/my_allocator.dir/my_allocator.cpp.o
-.PHONY : my_allocator.cpp.o
-
-my_allocator.i: my_allocator.cpp.i
-
-.PHONY : my_allocator.i
-
-# target to preprocess a source file
-my_allocator.cpp.i:
-	$(MAKE) -f CMakeFiles/my_allocator.dir/build.make CMakeFiles/my_allocator.dir/my_allocator.cpp.i
-.PHONY : my_allocator.cpp.i
-
-my_allocator.s: my_allocator.cpp.s
-
-.PHONY : my_allocator.s
-
-# target to generate assembly for a file
-my_allocator.cpp.s:
-	$(MAKE) -f CMakeFiles/my_allocator.dir/build.make CMakeFiles/my_allocator.dir/my_allocator.cpp.s
-.PHONY : my_allocator.cpp.s
 
 # Help Target
 help:
@@ -212,16 +158,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... my_allocator"
+	@echo "... allocator"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... myContainer.o"
-	@echo "... myContainer.i"
-	@echo "... myContainer.s"
-	@echo "... my_allocator.o"
-	@echo "... my_allocator.i"
-	@echo "... my_allocator.s"
 .PHONY : help
 
 

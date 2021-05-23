@@ -1,3 +1,10 @@
+#include <iostream>
+#include "pretty.h"
+#include <iostream>
+#include <vector>
+#include <map>
+#include <cassert>
+#include <algorithm>
 
 //template <typename T, template<typename Alloc<typename T> >
 template<typename T, typename Alloc = std::allocator<T> >
@@ -10,11 +17,8 @@ private:
     size_t curAllocatedSize;
 
 public:
-    myContainer()
-    {
-        curSize = 0;
-        curAllocatedSize = 0;
-    }
+    myContainer() : curSize(0), curAllocatedSize(0)
+    {}
 
     void push_back(T value)
     {
@@ -47,6 +51,7 @@ public:
             curSize++;
         }
     }
+
     void iterate()
     {
         for (int i = 0; i < curSize; i++)
