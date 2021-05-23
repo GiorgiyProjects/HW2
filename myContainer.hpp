@@ -52,13 +52,15 @@ public:
         }
     }
 
-    void print()
+    std::string print()
     {
+        std::string result = "";
         for (int i = 0; i < curSize; i++)
         {
-            std::cout << arr[i] << " ";
+           result += std::to_string(arr[i]) + " ";
         }
-        std::cout << std::endl;
+        result += "\n";
+        return result;
     }
 
     int size()

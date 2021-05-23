@@ -78,6 +78,10 @@ public:
             return;
         }
         int idx = p - &memoryPool[0];
+        if (idx <= 0)
+        {
+            return;
+        }
         std::replace (busyBytes.begin() + idx, busyBytes.begin() + idx + n, true, false);
     }
 
