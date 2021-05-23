@@ -56,11 +56,8 @@ public:
             return nullptr;
         }
 
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
-        std::cout << "allocate " << n << " bytes" << std::endl;
         if (!poolInitialized)
         {
-            //std::cout << "allocating memo" << std::endl;
             poolInitialized = true;
             memoryPool.resize(MAX_POOL_SIZE);
             busyBytes.resize(MAX_POOL_SIZE, false);
@@ -80,7 +77,6 @@ public:
         {
             return;
         }
-        //std::cout << __PRETTY_FUNCTION__ << std::endl;
         int idx = p - &memoryPool[0];
         std::replace (busyBytes.begin() + idx, busyBytes.begin() + idx + n, true, false);
     }
@@ -88,14 +84,11 @@ public:
     template<typename U, typename ...Args>
     void construct(U* p, Args &&...args)
     {
-        //std::cout << __PRETTY_FUNCTION__ << std::endl;
         new(p) U(std::forward<Args>(args)...);
     }
 
     void destroy(T* p)
     {
-        //std::cout << __PRETTY_FUNCTION__ << std::endl;
-        //std::cout << *p << std::endl;
         p->~T();
     }
 
