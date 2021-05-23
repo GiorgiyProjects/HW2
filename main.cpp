@@ -9,55 +9,56 @@
 #include "myAllocator.hpp"
 #include "myContainer.hpp"
 
+template<typename T>
+void fillMap (T& m, const int size)
+{
+    m[0] = 1;
+    for (int i = 1; i < 10; ++i)
+    {
+        m[i] = m[i - 1] * i;
+    }
+}
+
+template<typename T>
+void printMap(T m)
+{
+    std::for_each(m.begin(),
+                  m.end(),
+                  [](const auto &p) {
+                      std::cout << p.first << " " << p.second << std::endl;
+                  });
+}
+
 int main()
 {
+    static const int n = 10;
 
-    //auto v = std::vector<int, myAllocator<int>>{};
-    auto v = myContainer<int, myAllocator<int>>{};
-    //auto v = myContainer<int, std::allocator<int>>{};
+    auto m1 = std::map<int, int>{};
+    fillMap(m1, n);
+    printMap(m1);
 
-    for (int i = 0; i < 7; ++i) {
-        std::cout << "vector size = " << v.size() << std::endl;
-        v.push_back(i + 1);
-        v.iterate();
-
-        // output vector now
-        /*
-        std::cout << "vector output" << std::endl;
-        for (int i = 0; i < v.size(); ++i) {
-            std::cout << v[i] << std::endl;
-        }
-        std::cout << "vector output end" << std::endl;
-        */
-    }
-
-/*
-
-    auto m = std::map<
-        int,
-        int,
-        std::less<int>,
-        myAllocator<
-            std::pair<int, int>
-        >
+    auto m2 = std::map<
+            int,
+            int,
+            std::less<int>,
+            myAllocator<
+                    std::pair<int, int>
+            >
     >{};
-    m[0] = 1;
-    for (int i = 1; i < 10; ++i)
-    {
-        m[i] = m[i - 1] * i;
-        std::cout << m[i] << std::endl;
-    }
+    fillMap(m2, n);
+    printMap(m2);
 
+    auto v1 = myContainer<int, std::allocator<int>>{};
+    auto v2 = myContainer<int, myAllocator<int>>{};
 
-    /*
-    auto m = std::map<int, int>{};
-    m[0] = 1;
-    for (int i = 1; i < 10; ++i)
+    for (int i = 0; i < n; ++i)
     {
-        m[i] = m[i - 1] * i;
-        std::cout << m[i] << std::endl;
+        v1.push_back(i);
+        v2.push_back(i);
     }
-    */
+    v1.print();
+    v2.print();
+
     return 0;
 }
 

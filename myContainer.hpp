@@ -52,7 +52,7 @@ public:
         }
     }
 
-    void iterate()
+    void print()
     {
         for (int i = 0; i < curSize; i++)
         {
