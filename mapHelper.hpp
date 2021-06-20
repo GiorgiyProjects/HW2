@@ -8,7 +8,7 @@ struct mapHelper {
     }
 
     template<typename T>
-    std::string printMap(T m) {
+    std::string printMap(const T& m) {
         std::string result = "";
         std::for_each(m.begin(),
                       m.end(),

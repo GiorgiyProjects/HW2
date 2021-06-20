@@ -6,19 +6,21 @@
 #include <cassert>
 #include <algorithm>
 
-#define MAX_POOL_SIZE 1000
-
-template<typename T>
+template<typename T, const int MAX_POOL_SIZE = 1000>
 struct myAllocator {
 private:
     bool poolInitialized = false;
-
-    std::vector<T> memoryPool;
-    std::vector<bool> busyBytes;
+    int poolSize = MAX_POOL_SIZE;
+    T* memoryPool;
+    bool* busyBytes;
 
 public:
     myAllocator() = default;
-    ~myAllocator() = default;
+    ~myAllocator()
+    {
+        delete[] busyBytes;
+        delete[] memoryPool;
+    }
 
     using value_type = T;
     using pointer = T*;
@@ -33,7 +35,7 @@ public:
 
     int findFreePiece(int n)
     {
-        for (int i = 0; i < (busyBytes.size() - n); ++i)
+        for (int i = 0; i < (poolSize - n); ++i)
         {
             bool chunk_works = true;
             for (int j = 0; j < n; j++)
@@ -59,14 +61,18 @@ public:
         if (!poolInitialized)
         {
             poolInitialized = true;
-            memoryPool.resize(MAX_POOL_SIZE);
-            busyBytes.resize(MAX_POOL_SIZE, false);
+            memoryPool = new T[poolSize];
+            busyBytes = new bool[poolSize];
+            for (int i = 0; i < busyBytes[i]; i++)
+            {
+                busyBytes[i] = false;
+            }
         }
 
         // we first find continuous part of memory pool of size n, that is not busy
         int emptyChunkStart = findFreePiece(n);
         assert(emptyChunkStart != -1); // could not find the chunk of enough size in memory pool
-        std::replace (busyBytes.begin() + emptyChunkStart, busyBytes.begin() + emptyChunkStart + n, false, true);
+        for (int i = emptyChunkStart; i < emptyChunkStart + n; i++) busyBytes[i] = true;
 
         return &memoryPool[emptyChunkStart];
     }
@@ -82,7 +88,7 @@ public:
         {
             return;
         }
-        std::replace (busyBytes.begin() + idx, busyBytes.begin() + idx + n, true, false);
+        for (int i = idx; i < idx + n; i++) busyBytes[i] = false;
     }
 
     template<typename U, typename ...Args>
